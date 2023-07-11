@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Books = () => {
@@ -21,9 +22,17 @@ const Books = () => {
       <h1>Books Shop</h1>
       <div className="books">
         {books.map((book) => (
-          <div className="book">{book.cover && <img />}</div>
+          <div className="book" key={book.id}>
+            {book.cover && <img src={book.cover} alt="" />}
+            <h2>{book.title}</h2>
+            <p>{book.desc}</p>
+            <span>{book.price}</span>
+          </div>
         ))}
       </div>
+      <button>
+        <Link to="/add">Add new book</Link>
+      </button>
     </div>
   );
 };
